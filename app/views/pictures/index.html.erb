@@ -1,0 +1,35 @@
+<div class="container mt-5">
+  <h3 class="text-center">Welcome to Myles Home: Where Every Picture Tells a Story of Airbnb Adventure!</h3>
+
+  <div class="row">
+    <% @pictures.each do |picture| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <%= image_tag picture.image, class: 'card-img-top' %>
+          <div class="card-body">
+            <h5 class="card-title"><%= picture.title %></h5>
+            <p class="card-text"><%= picture.description %></p>
+            <p class="card-text"><strong>Price:</strong> $<%= picture.amount %></p>
+            <p>
+              <strong>Available for booking on:</strong>
+              <%= picture.bookings&.map { |booking| booking.date.strftime('%Y-%m-%d %H:%M') }&.join(', ') || 'No bookings available' %>
+            </p>
+
+            <!-- Like/Unlike button -->
+          <% unless current_user.likes?(picture) %>
+            <!-- Like button -->
+          <%= link_to 'Like', like_picture_path(picture), method: :post, class: 'btn btn-primary btn-block' %>
+          <% else %>
+           <!-- Unlike button -->
+          <%= link_to 'Unlike', unlike_picture_path(picture), method: :delete, class: 'btn btn-danger btn-block' %>
+          <% end %>
+
+
+            <!-- Book Now button -->
+            <%= link_to 'Book Now', new_booking_path(picture_id: picture.id), class: 'btn btn-success btn-block' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

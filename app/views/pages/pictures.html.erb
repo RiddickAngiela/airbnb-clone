@@ -1,0 +1,17 @@
+<!-- app/views/pictures/index.html.erb -->
+
+<h1>List of Pictures</h1>
+
+<ul>
+  <% @pictures.each do |picture| %>
+    <li>
+
+    <h1><%= @picture.title %></h1>
+    <p>Description: <%= @picture.description %></p>
+    <p>Amount: $<%= @picture.amount %></p>
+    <%= image_tag @picture.image, class: 'picture' %>
+    <%= link_to 'Back', pictures_path %>
+
+    </li>
+  <% end %>
+</ul>

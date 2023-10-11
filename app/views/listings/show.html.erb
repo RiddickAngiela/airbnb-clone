@@ -1,0 +1,8 @@
+<% @listing.pictures.each do |picture| %>
+  <%= image_tag picture.image.url %>
+<% end %>
+<% unless current_user.likes?(@picture) %>
+  <%= link_to 'Like', like_picture_path(@picture), method: :post, class: 'btn btn-primary' %>
+<% else %>
+  <%= link_to 'Unlike', like_picture_path(@picture), method: :delete, class: 'btn btn-danger' %>
+<% end %>

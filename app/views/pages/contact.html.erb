@@ -1,0 +1,57 @@
+<div class="container mt-5">
+  <h1 class="text-center">Talk To Us:</h1>
+
+  <%= form_with(model: @message, url: contact_path) do |form| %>
+    <% if @record.present? && @record.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being sent:</h2>
+        <ul>
+          <% @message.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <% form.label :name %>
+      <%= form.text_field :name, class: "form-control", placeholder: "Name", autocomplete: "name" %>
+    </div>
+    <br/>
+    <div class="form-group">
+      <% form.label :email %>
+      <%= form.email_field :email, class: "form-control", placeholder: "Email", autocomplete: "email" %>
+    </div>
+    <br/>
+    <div class="form-group">
+      <% form.label :subject %>
+      <%= form.text_field :subject, class: "form-control", placeholder: "Subject", autocomplete: "subject" %>
+    </div>
+    <br/>
+    <div class="form-group">
+      <% form.label :content %>
+      <%= form.text_area :content, class: "form-control", placeholder: "Content", autocomplete: "content" %>
+    </div>
+    <br/>
+    <div class="form-group text-center">
+      <%= form.submit 'Send Message', class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+
+  <div class="container text-center mt-5">
+    <h1>Contact Us Today</h1>
+
+    <address>
+      <strong>Myles Homes</strong><br>
+      P.O Box 100 – 00100<br>
+      Homabay Town, opposite Salama Road<br>
+      Homabay, Kenya<br>
+    </address>
+
+    <p>
+      Phone: 0799888378 or 0799801134<br>
+      Email: <a href="mailto:myleshome901@gmail.com">myleshome901@gmail.com</a><br>
+    </p>
+  </div>
+</div>
+

@@ -1,0 +1,23 @@
+<!-- app/views/bookings/create.html.erb -->
+
+<h1>Booking Confirmation</h1>
+
+<div class="alert alert-success">
+  Your booking has been successfully created.
+</div>
+
+<h2>Booked Picture Details</h2>
+
+<div class="card">
+  <%= image_tag @booking.picture.image, class: 'card-img-top' %>
+  <div class="card-body">
+    <h5 class="card-title"><%= @booking.picture.title %></h5>
+    <p class="card-text"><%= @booking.picture.description %></p>
+    <p class="card-text"><%= @booking.picture.amount %></p>
+    <p>Booking Date and Time: <%= @booking.date.strftime('%Y-%m-%d %H:%M') %></p>
+  </div>
+</div>
+
+<p>
+  <%= link_to 'Back to Pictures', pictures_path, class: 'btn btn-primary' %>
+</p>

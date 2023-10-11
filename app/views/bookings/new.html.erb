@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1 class="text-center">Book a Home</h1>
+
+      <%= form_with(model: @booking, url: bookings_path, method: :post) do |form| %>
+        <div class="form-group">
+          <%= form.label :picture_id, 'Select a Picture' %>
+          <%= form.collection_select(:picture_id, @pictures, :id, :title, { prompt: 'Select a picture' }, class: 'form-control') %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :date, 'Booking Date and Time' %>
+          <%= form.datetime_select :date, { class: 'form-control' } %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit 'Book Picture', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

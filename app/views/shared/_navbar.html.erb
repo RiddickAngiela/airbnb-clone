@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary navsize">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <div style="font-size:20px">
+        <%= image_tag("new 1.jpg", alt: "My Logo", class: "img-fluid logo-img") %>
+      </div>
+      Myles Home
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <% if user_signed_in? %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to "List", pictures_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "About", about_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Services", services_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'Contact', contact_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'Reviews', reviews_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %></li>
+          <!-- Search Form -->
+          <li class="nav-item">
+            <form class="form-inline my-3 mr-sm-2 my-lg-1" action="/search" method="get">
+              <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </li>
+        </ul>
+      <% else %>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to "Sign In", new_user_session_path, class: "nav-link" %></li>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</nav>
+

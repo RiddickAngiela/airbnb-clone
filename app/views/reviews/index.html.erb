@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Reviews</h1>
+  <ul class="list-group">
+    <% @reviews.each do |review| %>
+      <li class="list-group-item">
+        <h2><%= review.title %></h2>
+        <p><%= review.content %></p>
+        <p>Rating: <%= review.rating %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<!-- Styling a button -->
+<%= link_to "Write a Review", new_review_path, class: "btn btn-primary" %>
